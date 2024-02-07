@@ -3,6 +3,7 @@ using DatabaseMicroService.Extensions;
 using DatabaseMicroService.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseMicroService.Controllers
 {
@@ -18,17 +19,12 @@ namespace DatabaseMicroService.Controllers
 
             _electricityDbContext = electricityDbContext;
             _logger = logger;
-        }   
+        }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ElectricityPriceDataIn data)
+        public async Task<IActionResult> Post([FromBody] ElectricityPriceDataDtoIn data)
         {
-            // Tässä kohtaa voit tallentaa datan tietokantaan tai suorittaa jonkin muun toiminnon
-            // Esimerkki: await _dataStorageService.StoreData(data);
-
-            // Palautetaan vastaus, että data on vastaanotettu ja käsitelty
-
-            if(data == null)
+            if (data == null)
             {
                 return BadRequest("Dataa ei vastaanotettu.");
             }
@@ -52,6 +48,8 @@ namespace DatabaseMicroService.Controllers
 
             return Ok("Data vastaanotettu ja käsitelty.");
         }
+
+       
     
     }
 }

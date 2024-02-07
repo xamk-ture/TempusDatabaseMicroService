@@ -27,9 +27,10 @@ namespace DatabaseMicroService.Models
         private void AddTimestamps()
         {
             var entities = ChangeTracker.Entries()
-                .Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
+                .Where(x => x.Entity is BaseEntity 
+                && (x.State == EntityState.Modified));
 
-            var now = DateTime.UtcNow;
+            var now = DateTime.Now;
 
             foreach (var entity in entities)
             {

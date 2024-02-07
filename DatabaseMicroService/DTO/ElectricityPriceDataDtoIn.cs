@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace DatabaseMicroService.DTO
 {
-    public class ElectricityPriceDataIn
+    public class ElectricityPriceDataDtoIn
     {
         public List<PriceInfo> Prices { get; set; }
     

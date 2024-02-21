@@ -49,7 +49,15 @@ namespace DatabaseMicroService.Controllers
             return Ok("Data vastaanotettu ja käsitelty.");
         }
 
-       
-    
+        [HttpGet("GetPrices")]
+        public async Task<IActionResult> GetPrices([FromQuery] DateTime startDate, DateTime endDate)
+        {
+            var results = await _electricityDbContext.ElectricityPriceDatas
+                .Where(x => x.StartDate >= startDate && x.EndDate <= endDate).ToListAsync();
+
+            return Ok(results);
+
+        }
+
     }
 }
